@@ -3,7 +3,7 @@
 postgres:
 	@docker stop postgres > /dev/null 2>&1 || true
 	@docker rm postgres > /dev/null 2>&1 || true
-	@docker run -it --rm --name postgres \
+	@docker run --interactive --tty --rm --name postgres \
 		--mount type=tmpfs,destination=/var/lib/postgresql/data \
 		--volume $(shell pwd)/scripts:/docker-entrypoint-initdb.d \
 		--publish 5432:5432 \
